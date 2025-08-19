@@ -1,3 +1,4 @@
+/* eslint no-underscore-dangle: 0 */
 import Currency from './3-currency.js';
 
 export default class Pricing {

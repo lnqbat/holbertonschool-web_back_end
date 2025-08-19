@@ -1,3 +1,4 @@
+/* eslint no-underscore-dangle: 0 */
 export default class Building {
   constructor(sqft) {
     if (typeof sqft !== 'number') {
