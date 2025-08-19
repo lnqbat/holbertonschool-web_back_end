@@ -1,0 +1,12 @@
+{
+  "name": "es6_classes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "0-classroom.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node"
+  },
+  "author": "",
+  "license": "ISC"
+}
