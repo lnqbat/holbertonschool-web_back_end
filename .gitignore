@@ -273,3 +273,6 @@ robots.txt
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+babel.config.js
+.eslintrc.js
