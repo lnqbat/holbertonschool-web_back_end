@@ -278,3 +278,4 @@ babel.config.js
 .eslintrc.js
 utils.js
 node_modules
+main.mjs
