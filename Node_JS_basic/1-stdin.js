@@ -1,9 +1,11 @@
-console.log("Welcome to Holberton School, what is your name?")
+/* eslint jest/require-hook: "off" */
 
-process.stdin.on("data", (name) => {
-    console.log("Your name is: " + name.toString().trim())
-})
+console.log('Welcome to Holberton School, what is your name?');
 
-process.stdin.on("end", () => {
-    console.log("This important software is now closing")
-})
+process.stdin.on('data', (name) => {
+  console.log(`Your name is: ${name.toString().trim()}`);
+});
+
+process.stdin.on('end', () => {
+  console.log('This important software is now closing');
+});
