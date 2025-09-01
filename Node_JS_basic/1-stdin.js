@@ -1,6 +1,6 @@
 console.log('Welcome to Holberton School, what is your name?');
 
-process.stdin.on('data', (buff) => {
+process.stdin.once('data', (buff) => {
   const name = buff.toString().trim();
   process.stdout.write(`Your name is: ${name}\n`);
 
