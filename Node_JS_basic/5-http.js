@@ -1,9 +1,9 @@
 const http = require('http');
 const fs = require('fs');
 
-function buildStudentsReport(path) {
+function buildStudentsReport(dbPath) {
   return new Promise((resolve, reject) => {
-    fs.readFile(path, (err, data) => {
+    fs.readFile(dbPath, (err, data) => {
       if (err) {
         reject(new Error('Cannot load the database'));
         return;
@@ -65,11 +65,12 @@ const app = http.createServer((req, res) => {
 
   if (req.url === '/students') {
     const dbPath = process.argv[2];
+
     res.write('This is the list of our students\n');
 
     buildStudentsReport(dbPath)
       .then((report) => res.end(report))
-      .catch(() => res.end('Cannot load the database'));
+      .catch((error) => res.end(error.message));
     return;
   }
 
