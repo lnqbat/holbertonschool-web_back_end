@@ -1,18 +1,14 @@
-/*eslint-disable*/
 const fs = require('fs');
 
 function countStudents(path) {
-  fs.readFile(path, (err, fileData) => {
-    if (err) {
-      throw new Error('Cannot load the database');
-    }
-
+  try {
+    const fileData = fs.readFileSync(path);
     const text = fileData.toString();
 
     const rawLines = text.split('\n');
-
     const lines = [];
-    for (let i = 0; i < rawLines.length; i++) {
+
+    for (let i = 0; i < rawLines.length; i += 1) {
       if (rawLines[i].trim() !== '') {
         lines.push(rawLines[i]);
       }
@@ -27,7 +23,7 @@ function countStudents(path) {
     console.log(`Number of students: ${students.length}`);
 
     const fields = {};
-    for (let i = 0; i < students.length; i++) {
+    for (let i = 0; i < students.length; i += 1) {
       const parts = students[i].split(',');
       const firstname = parts[0].trim();
       const field = parts[parts.length - 1].trim();
@@ -39,10 +35,16 @@ function countStudents(path) {
     }
 
     for (const field in fields) {
-      const list = fields[field];
-      console.log(`Number of students in ${field}: ${list.length}. List: ${list.join(', ')}`);
-    }
-  });
+  if (fields.hasOwnProperty(field)) {
+    const list = fields[field];
+    console.log(
+      `Number of students in ${field}: ${list.length}. List: ${list.join(', ')}`
+    );
+  }
+}
+  } catch (err) {
+    throw new Error('Cannot load the database');
+  }
 }
 
 module.exports = countStudents;
