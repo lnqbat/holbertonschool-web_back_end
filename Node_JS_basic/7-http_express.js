@@ -56,7 +56,7 @@ function countStudents(dbPath) {
 const app = require('express')();
 
 app.get('/', (req, res) => {
-  res.send('Hello Holberton School!\n');
+  res.send('Hello Holberton School!');
 });
 
 app.get('/students', (req, res) => {
