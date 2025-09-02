@@ -60,7 +60,6 @@ app.get('/', (req, res) => {
 });
 
 app.get('/students', (req, res) => {
-  res.setHeader('Content-Type', 'text/plain');
   countStudents(process.argv[2])
     .then((result) => {
       res.send(`This is the list of our students\n${result}`);
