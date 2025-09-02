@@ -18,17 +18,15 @@ export default function readDatabase(filePath) {
       const fields = {};
       for (const line of rows) {
         const parts = line.split(',').map((p) => p.trim());
-        if (parts.length < 2) {
-          continue;
-        }
+        if (parts.length >= 2) {
+          const firstname = parts[0];
+          const field = parts[parts.length - 1];
 
-        const firstname = parts[0];
-        const field = parts[parts.length - 1];
-
-        if (!fields[field]) {
-          fields[field] = [];
+          if (!fields[field]) {
+            fields[field] = [];
+          }
+          fields[field].push(firstname);
         }
-        fields[field].push(firstname);
       }
 
       resolve(fields);
