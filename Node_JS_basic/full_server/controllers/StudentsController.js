@@ -27,7 +27,8 @@ class StudentsController {
 
         for (let i = 0; i < fieldNames.length; i += 1) {
           const f = fieldNames[i];
-          const list = fields[f] || [];
+          const list = Array.isArray(fields[f]) ? fields[f] : [];
+
           response += `\nNumber of students in ${f}: ${list.length}. List: `;
           for (let k = 0; k < list.length; k += 1) {
             response += list[k];
@@ -55,7 +56,7 @@ class StudentsController {
 
     readDatabase(dbPath)
       .then((fields) => {
-        const list = fields[major] || [];
+        const list = (fields && fields[major]) ? fields[major] : [];
         let response = 'List: ';
         for (let i = 0; i < list.length; i += 1) {
           response += list[i];
@@ -63,7 +64,6 @@ class StudentsController {
             response += ', ';
           }
         }
-
         res.status(200).send(response);
       })
       .catch(() => {
