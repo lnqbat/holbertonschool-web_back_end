@@ -1,7 +1,6 @@
 const app = require('express')();
 
 app.get('/', (req, res) => {
-  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
   res.send('Hello Holberton School!');
 });
 
