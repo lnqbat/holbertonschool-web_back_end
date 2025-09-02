@@ -1,14 +1,11 @@
-const express = require('express');
+const http = require('http');
+const app = require('express')();
 
-const app = express();
-const port = 1245;
+http.createServer(app);
 
 app.get('/', (req, res) => {
   res.send('Hello Holberton School!');
 });
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+app.listen(1245);
 
 module.exports = app;
