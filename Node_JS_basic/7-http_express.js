@@ -56,7 +56,6 @@ function countStudents(dbPath) {
 const app = require('express')();
 
 app.get('/', (req, res) => {
-  res.setHeader('Content-Type', 'text/plain');
   res.send('Hello Holberton School!\n');
 });
 
