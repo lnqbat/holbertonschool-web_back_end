@@ -1,12 +1,10 @@
 console.log('Welcome to Holberton School, what is your name?');
 
-process.stdin.once('data', (buff) => {
-  const name = buff.toString().trim();
-  process.stdout.write(`Your name is: ${name}\n`);
+process.stdin.setEncoding('utf-8');
 
-  if (process.stdin.isTTY) {
-    process.exit(0);
-  }
+process.stdin.on('data', (name) => {
+  name = name.toString();
+  process.stdout.write(`Your name is: ${name}`);
 });
 
 process.stdin.on('end', () => {
