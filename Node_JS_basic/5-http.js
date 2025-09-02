@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 
-function buildStudentsReport(dbPath) {
+function countStudents(dbPath) {
   return new Promise((resolve, reject) => {
     fs.readFile(dbPath, (err, data) => {
       if (err) {
@@ -68,7 +68,7 @@ const app = http.createServer((req, res) => {
 
     res.write('This is the list of our students\n');
 
-    buildStudentsReport(dbPath)
+    countStudents(dbPath)
       .then((report) => res.end(report))
       .catch((error) => res.end(error.message));
     return;
